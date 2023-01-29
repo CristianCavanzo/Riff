@@ -15,3 +15,4 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 		</main>
 	);
 }
+export { nunito };
