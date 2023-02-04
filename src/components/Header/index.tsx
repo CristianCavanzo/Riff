@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Menu from '@icons/menu.svg';
 import Image from 'next/image';
-import { nunito } from 'src/pages/_app';
+import { montserrat } from 'src/pages/_app';
 
 const HeaderComponent = styled.header`
 	display: flex;
@@ -88,12 +88,12 @@ const Header = () => {
 				<ul>
 					<li>
 						<Link href="/ingresar">
-							<button className={`sigIn ${nunito.className}`}>Registro</button>
+							<button className={`sigIn ${montserrat.className}`}>Registro</button>
 						</Link>
 					</li>
 					<li>
 						<Link href="/ingresar">
-							<button className={nunito.className}>Ingresar</button>
+							<button className={montserrat.className}>Ingresar</button>
 						</Link>
 					</li>
 				</ul>

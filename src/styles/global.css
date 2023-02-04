@@ -1,5 +1,5 @@
 :root {
-	--purple: #4d1a51;
+	--blue: #1b1926;
 }
 * {
 	margin: 0;
@@ -7,5 +7,5 @@
 	box-sizing: border-box;
 }
 body {
-	background: #4d1a51;
+	background: var(--blue);
 }
