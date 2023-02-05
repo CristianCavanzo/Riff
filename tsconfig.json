@@ -17,7 +17,9 @@
 			"@components/*": ["./src/components/*"],
 			"@styles/*": ["./src/styles/*"],
 			"@icons/*": ["./src/public/icons/*"],
-			"@public/*": ["./src/public/*"]
+			"@public/*": ["./src/public/*"],
+			"@hooks/*": ["./src/hooks/*"],
+			"@globalTypes": ["./index.d.ts"]
 		},
 		"baseUrl": "."
 	},

@@ -1,15 +1,4 @@
-export type Sizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XLL';
-export type FontWeight =
-	| 'Thin'
-	| 'ExtraLight'
-	| 'Light'
-	| 'Regular'
-	| 'Medium'
-	| 'SemiBold'
-	| 'Bold'
-	| 'ExtraBold'
-	| 'Black';
-
+import { FontWeight } from 'index';
 /* eslint-disable no-unused-vars */
 export enum FontWeightTransform {
 	Thin = 100,
@@ -22,3 +11,10 @@ export enum FontWeightTransform {
 	ExtraBold = 800,
 	Black = 900,
 }
+
+const useFontWeight = (fontWeight: FontWeight) => {
+	const fontWeightReturn = FontWeightTransform[fontWeight];
+	return fontWeightReturn;
+};
+
+export { useFontWeight };
