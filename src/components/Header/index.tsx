@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Menu from '@icons/menu.svg';
+import Close from '@icons/close.svg';
 import Image from 'next/image';
 import { montserrat } from 'src/pages/_app';
 
@@ -15,22 +16,26 @@ const HeaderComponent = styled.header`
 	align-items: center;
 	justify-content: space-between;
 	.containerHeader {
-		display: none;
-	}
-	.trueMenu {
-		transition: all 1s ease-in;
-		background: #fff;
+		transition: all 0.15s ease-in;
 		display: flex;
+		visibility: hidden;
+		opacity: 0;
 		position: absolute;
 		right: 0;
 		left: 0;
 		top: 0;
 		bottom: 0;
+	}
+	.trueMenu {
+		transition: all 0.2s ease-out;
+		background: #fff;
 		flex-direction: column;
 		align-items: center;
 		padding: 40px 0;
+		opacity: 1;
+		visibility: visible;
 	}
-	.trueMenu ul {
+	.containerHeader ul {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -40,28 +45,82 @@ const HeaderComponent = styled.header`
 		font-weight: bold;
 		row-gap: 4px;
 	}
-	.trueMenu ul:first-child {
+	.containerHeader ul:first-child {
 		justify-content: flex-end;
 	}
-	.trueMenu ul button {
+	.containerHeader ul button {
 		font-weight: bold;
 		font-size: 32px;
 		border: none;
 		padding: 8px 20px;
 		border-radius: 20px;
-		background: var(--purple);
+		background: var(--blue);
 		color: #fff;
+		cursor: pointer;
 	}
-	.trueMenu ul .sigIn {
+	.containerHeader ul .sigIn {
 		background: none;
 		color: #000;
 	}
 	ul li {
 		list-style: none;
+		cursor: pointer;
+		position: relative;
+		text-align: center;
 	}
+	ul li a {
+		text-decoration: none;
+		color: var(--blue);
+	}
+	.line {
+		position: absolute;
+		width: 0px;
+		transition: width 0.2s ease-in;
+		height: 2px;
+		background: var(--gold);
+		left: 0;
+	}
+	ul li:hover .line {
+		transition: all 0.3s ease-in;
+		width: 100%;
+	}
+
 	.close {
 		position: absolute;
 		right: 20px;
+	}
+	.menu-hamburguer {
+		border: none;
+		background: transparent;
+		cursor: pointer;
+	}
+	@media (min-width: 768px) {
+		.menu-hamburguer {
+			display: none;
+		}
+		.containerHeader,
+		.falseMenu {
+			display: flex;
+			opacity: 1;
+			visibility: visible;
+			position: relative;
+			justify-content: center;
+			align-items: center;
+			column-gap: 16px;
+		}
+		.containerHeader ul,
+		.containerHeader ul button {
+			font-size: 18px;
+		}
+		.containerHeader ul:first-child {
+			column-gap: 10px;
+		}
+		.containerHeader ul {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 `;
 
@@ -76,14 +135,25 @@ const Header = () => {
 	return (
 		<HeaderComponent>
 			<Icon color="black" />
-			<button onClick={handleMenu}>
-				<Image src={Menu} width={32} height={32} alt="menu hamburger"></Image>
+			<button onClick={handleMenu} className="menu-hamburguer">
+				<Image src={Menu} width={32} height={32} alt="menu hamburger" />
 			</button>
 			<div className={`containerHeader ${state.open}Menu`}>
 				<ul>
-					<li>Inicio</li>
-					<li>Acerca de nosotros</li>
-					<li>Precios</li>
+					<li>
+						<Link href="/">Inicio</Link>
+						<div className="line"></div>
+					</li>
+					<li>
+						<Link href="/">
+							Acerca de nosotros<div className="line"></div>
+						</Link>
+					</li>
+					<li>
+						<Link href="/">
+							Precios<div className="line"></div>
+						</Link>
+					</li>
 				</ul>
 				<ul>
 					<li>
@@ -97,8 +167,8 @@ const Header = () => {
 						</Link>
 					</li>
 				</ul>
-				<button onClick={handleMenu} className="close">
-					Close
+				<button onClick={handleMenu} className="close menu-hamburguer">
+					<Image src={Close} width={32} height={32} alt="menu hamburger" />
 				</button>
 			</div>
 		</HeaderComponent>
