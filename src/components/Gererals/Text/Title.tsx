@@ -6,23 +6,27 @@ import { monument } from 'src/pages/_app';
 import styled from 'styled-components';
 
 type SizeTitle = Exclude<Sizes, 'L' | 'XL' | 'XLL'>;
-
+type Colors = 'White' | 'Black';
 interface IProps {
 	size: SizeTitle;
 	children: React.ReactNode;
 	fontWeight: FontWeight;
+	color: Colors;
 }
 
 interface IComponent {
 	size: string;
 	fontWeight: FontWeightTransform;
+	color: Colors;
 }
 
 const TitleComponent = styled.h2<IComponent>`
 	font-size: ${(props) => props.size};
+	color: var(--${(props) => props.color?.toLowerCase()});
+	font-weight: ${(props) => props.fontWeight};
 `;
 
-const Title = ({ children, size, fontWeight }: IProps) => {
+const Title = ({ children, size, fontWeight, color }: IProps) => {
 	const sizes: { size: SizeTitle; px: string }[] = [
 		{
 			size: 'XS',
@@ -40,7 +44,7 @@ const Title = ({ children, size, fontWeight }: IProps) => {
 	const weight = useFontWeight(fontWeight);
 	const pxSize = useSize(sizes, size);
 	return (
-		<TitleComponent size={pxSize} fontWeight={weight} className={monument.className}>
+		<TitleComponent size={pxSize} fontWeight={weight} className={monument.className} color={color}>
 			{children}
 		</TitleComponent>
 	);

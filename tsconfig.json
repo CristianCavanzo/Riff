@@ -17,9 +17,11 @@
 			"@components/*": ["./src/components/*"],
 			"@styles/*": ["./src/styles/*"],
 			"@icons/*": ["./src/public/icons/*"],
+			"@pictures/*": ["./src/public/pictures/*"],
 			"@public/*": ["./src/public/*"],
 			"@hooks/*": ["./src/hooks/*"],
-			"@globalTypes": ["./index.d.ts"]
+			"@globalTypes": ["./index.d.ts"],
+			"@Layouts/*": ["./src/Layouts/*"]
 		},
 		"baseUrl": "."
 	},
