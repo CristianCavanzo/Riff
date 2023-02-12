@@ -5,7 +5,6 @@ import MainImage from '@pictures/main-image.jpg';
 import Image from 'next/image';
 const MainComponent = styled.main`
 	display: grid;
-	height: calc(100vh - 70px);
 	justify-items: center;
 	align-items: center;
 	p {
@@ -24,15 +23,19 @@ const MainComponent = styled.main`
 			padding: 0 24px;
 		}
 	}
+
 	@media (min-width: 1024px) {
 		grid-template-columns: 1fr 1fr;
 		div {
 			padding: 0 80px;
 			text-align: left;
 		}
+		height: calc(80vh - 70px);
+	}
+	@media (max-width: 500px) {
 		img {
-			width: 500px;
-			height: 334px;
+			width: 300px;
+			height: 200px;
 		}
 	}
 `;
@@ -50,7 +53,7 @@ const Main = () => {
 				</p>
 			</div>
 			<div className="rigth">
-				<Image src={MainImage} width={300} alt="Image main" className="border-radius-24" />
+				<Image src={MainImage} width={500} alt="Image main" className="border-radius-24" />
 			</div>
 		</MainComponent>
 	);

@@ -12,6 +12,7 @@ interface IProps {
 	children: React.ReactNode;
 	fontWeight: FontWeight;
 	color: Colors;
+	type?: 'h2' | 'p';
 }
 
 interface IComponent {
@@ -26,7 +27,7 @@ const TitleComponent = styled.h2<IComponent>`
 	font-weight: ${(props) => props.fontWeight};
 `;
 
-const Title = ({ children, size, fontWeight, color }: IProps) => {
+const Title = ({ children, size, fontWeight, color, type }: IProps) => {
 	const sizes: { size: SizeTitle; px: string }[] = [
 		{
 			size: 'XS',
@@ -44,7 +45,13 @@ const Title = ({ children, size, fontWeight, color }: IProps) => {
 	const weight = useFontWeight(fontWeight);
 	const pxSize = useSize(sizes, size);
 	return (
-		<TitleComponent size={pxSize} fontWeight={weight} className={monument.className} color={color}>
+		<TitleComponent
+			size={pxSize}
+			fontWeight={weight}
+			className={monument.className}
+			color={color}
+			as={type || 'h2'}
+		>
 			{children}
 		</TitleComponent>
 	);
