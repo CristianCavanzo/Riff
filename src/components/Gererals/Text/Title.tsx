@@ -8,6 +8,7 @@ import styled from 'styled-components';
 type SizeTitle = Exclude<Sizes, 'L' | 'XL' | 'XLL'>;
 type Colors = 'White' | 'Black';
 interface IProps {
+	className?: string;
 	size: SizeTitle;
 	children: React.ReactNode;
 	fontWeight: FontWeight;
@@ -27,7 +28,7 @@ const TitleComponent = styled.h2<IComponent>`
 	font-weight: ${(props) => props.fontWeight};
 `;
 
-const Title = ({ children, size, fontWeight, color, type }: IProps) => {
+const Title = ({ children, size, fontWeight, color, type, className }: IProps) => {
 	const sizes: { size: SizeTitle; px: string }[] = [
 		{
 			size: 'XS',
@@ -48,7 +49,7 @@ const Title = ({ children, size, fontWeight, color, type }: IProps) => {
 		<TitleComponent
 			size={pxSize}
 			fontWeight={weight}
-			className={monument.className}
+			className={`${monument.className} ${className}`}
 			color={color}
 			as={type || 'h2'}
 		>

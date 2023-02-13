@@ -14,3 +14,6 @@ body {
 .border-radius-24 {
 	border-radius: 24px;
 }
+.text-center {
+	text-align: center;
+}
