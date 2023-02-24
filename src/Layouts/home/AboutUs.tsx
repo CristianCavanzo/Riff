@@ -1,3 +1,4 @@
+import Handshake from '@components/Gererals/Icon/Handshake';
 import { Title } from '@components/Gererals/Text/Title';
 import React from 'react';
 import styled from 'styled-components';
@@ -31,7 +32,12 @@ const PointsComponent = styled.div`
 const Points = ({ title, content }: { title: string; content: string }) => {
 	return (
 		<PointsComponent>
-			<h3>{title}</h3>
+			<div>
+				<figure>
+					<Handshake width={30} heigth={30} />
+				</figure>
+				<h3>{title}</h3>
+			</div>
 			<p>{content}</p>
 		</PointsComponent>
 	);
